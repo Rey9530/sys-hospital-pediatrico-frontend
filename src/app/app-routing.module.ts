@@ -8,22 +8,33 @@ import { content } from "./shared/routes/routes";
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "simple-page/first-page",
+    redirectTo: "auth/login",
     pathMatch: "full",
   },
   {
     path: "",
     component: ContentComponent,
-    children: content
-
+    children: [
+      ...content,
+      {
+        path: "dashboard",
+        loadChildren: () =>
+          import("./modules/dashboard/dashboard.module").then((m) => m.DashboardModule),
+        // canActivate: [NoAuthGuard],
+      },
+    ]
   },
   {
-    path: "",
-    component: FullComponent,
-    children: full
-
-
+    path: "auth",
+    loadChildren: () =>
+      import("./modules/auth/auth.module").then((m) => m.AuthModule),
+    // canActivate: [NoAuthGuard],
   },
+  // {
+  //   path: "",
+  //   component: FullComponent,
+  //   children: full
+  // },
   {
     path: "**",
     redirectTo: "",
@@ -41,4 +52,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -17,14 +17,15 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
+// import { LoginComponent } from './auth/login/login.component';
 
 import { OverlayModule } from '@angular/cdk/overlay';
+import { AuthModule } from "./modules/auth/auth.module";
+import { DashboardModule } from "./modules/dashboard/dashboard.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
+    AppComponent, 
   ],
   imports: [
     BrowserModule,
@@ -36,14 +37,16 @@ import { OverlayModule } from '@angular/cdk/overlay';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-//     // for HttpClient use:
+    //     // for HttpClient use:
     LoadingBarHttpClientModule,
-//     // for Router use:
+    //     // for Router use:
     LoadingBarRouterModule,
-//     // for Core use:
-    LoadingBarModule
+    //     // for Core use:
+    LoadingBarModule,
+    AuthModule,
+    DashboardModule
   ],
-  providers: [ CookieService],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

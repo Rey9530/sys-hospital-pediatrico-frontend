@@ -10,14 +10,21 @@ import { map, delay, withLatestFrom } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+
   // For Progressbar
-  loaders = this.loader.progress$.pipe(
-    delay(1000),
-    withLatestFrom(this.loader.progress$),
-    map(v => v[1]),
-  );
-  
+  // loaders = this.loader.progress$.pipe(
+  //   delay(1000),
+  //   withLatestFrom(this.loader.progress$),
+  //   map(v => v[1]),
+  // );
+  get loaders() {
+    return this.loader.progress$.pipe(
+      delay(1000),
+      withLatestFrom(this.loader.progress$),
+      map(v => v[1]),
+    )
+  }
+
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
     private loader: LoadingBarService) {
   }
