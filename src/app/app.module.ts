@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from "./shared/shared.module";
@@ -22,10 +22,12 @@ import { AppComponent } from './app.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { AuthModule } from "./modules/auth/auth.module";
 import { DashboardModule } from "./modules/dashboard/dashboard.module";
+import { JwtInterceptor } from "./modules/core/helpers/jwt.interceptor";
+import { ErrorInterceptor } from "./modules/core/helpers/error.interceptor";
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,12 @@ import { DashboardModule } from "./modules/dashboard/dashboard.module";
     AuthModule,
     DashboardModule
   ],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

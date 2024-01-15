@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { AuthenticationService } from "src/app/modules/core/services";
 
 @Component({
   selector: "app-my-account",
@@ -10,15 +11,17 @@ export class MyAccountComponent implements OnInit {
   public userName: string;
   public profileImg: "assets/images/dashboard/profile.jpg";
 
-  constructor(public router: Router) {
+  constructor(public router: Router,
+    private authenticationService: AuthenticationService,) {
     if (JSON.parse(localStorage.getItem("user"))) {
     } else {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   logoutFunc() {
-    this.router.navigateByUrl('auth/login');
+    this.authenticationService.logout();
+    this.router.navigateByUrl('/auth/login');
   }
 }

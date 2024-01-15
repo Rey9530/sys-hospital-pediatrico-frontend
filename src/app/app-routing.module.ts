@@ -4,6 +4,8 @@ import { ContentComponent } from "./shared/components/layout/content/content.com
 import { FullComponent } from "./shared/components/layout/full/full.component";
 import { full } from "./shared/routes/full.routes";
 import { content } from "./shared/routes/routes";
+import { AuthGuard } from "./modules/core/guards/auth.guard";
+import { NoAuthGuard } from "./modules/core/guards/noAuth.guard";
 
 const routes: Routes = [
   {
@@ -14,6 +16,7 @@ const routes: Routes = [
   {
     path: "",
     component: ContentComponent,
+    canActivate: [AuthGuard],
     children: [
       ...content,
       {
@@ -28,16 +31,11 @@ const routes: Routes = [
     path: "auth",
     loadChildren: () =>
       import("./modules/auth/auth.module").then((m) => m.AuthModule),
-    // canActivate: [NoAuthGuard],
-  },
-  // {
-  //   path: "",
-  //   component: FullComponent,
-  //   children: full
-  // },
+    canActivate: [NoAuthGuard],
+  }, 
   {
     path: "**",
-    redirectTo: "",
+    redirectTo: "auth/login",
   },
 ];
 
