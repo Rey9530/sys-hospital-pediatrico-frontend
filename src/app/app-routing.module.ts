@@ -23,7 +23,11 @@ const routes: Routes = [
         path: "dashboard",
         loadChildren: () =>
           import("./modules/dashboard/dashboard.module").then((m) => m.DashboardModule),
-        // canActivate: [NoAuthGuard],
+      },
+      {
+        path: "employees",
+        loadChildren: () =>
+          import("./modules/employees/employees.module").then((m) => m.EmployeesModule),
       },
     ]
   },
@@ -32,7 +36,7 @@ const routes: Routes = [
     loadChildren: () =>
       import("./modules/auth/auth.module").then((m) => m.AuthModule),
     canActivate: [NoAuthGuard],
-  }, 
+  },
   {
     path: "**",
     redirectTo: "auth/login",

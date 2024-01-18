@@ -1,0 +1,263 @@
+<app-breadcrumb [title]="'Crear Empleado'" [items]="['Empleados' ]" [active_item]="'Crear'"></app-breadcrumb>
+<div class="container-fluid">
+    <div class="edit-profile">
+        <div class="row">
+
+            <div class="col-xl-12">
+                <form class="card" >
+                    <!-- [formGroup]="editProfile" -->
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Edit Profile</h4>
+                        <div class="card-options">
+                            <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse"><i
+                                    class="fe fe-chevron-up"></i></a><a class="card-options-remove"
+                                href="javascript:void(0)" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Código de empleado</label>
+                                    <input class="form-control" type="text" placeholder="Company"
+                                        formControlName="company" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Primer Nombre</label>
+                                    <input class="form-control" type="text" placeholder="Username"
+                                        formControlName="name_1" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Segundo Nombre</label>
+                                    <input class="form-control" type="text" placeholder="Username"
+                                        formControlName="name_2" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Tercer Nombre</label>
+                                    <input class="form-control" type="text" placeholder="Username"
+                                        formControlName="name_3" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Primer Apellido</label>
+                                    <input class="form-control" type="text" placeholder="Username"
+                                        formControlName="surname_1" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Segundo Apellido</label>
+                                    <input class="form-control" type="text" placeholder="Username"
+                                        formControlName="surname_2" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Apellido de casada</label>
+                                    <input class="form-control" type="text" placeholder="Username"
+                                        formControlName="surname_3" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Apellido de casada</label>
+                                    <input class="form-control" type="text" placeholder="Username"
+                                        formControlName="surname_3" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Genero</label>
+                                    <select class="form-control">
+                                        <option selected>--Seleccione--</option>
+                                        <option value="1">Germany</option>
+                                        <option value="2">Canada</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="form-label">Fecha de nacimiento</label>
+                                <div class="input-group mb-3">
+                                    <input class="form-control" [(ngModel)]="model2" placeholder="yyyy-mm-dd" name="dp"
+                                        ngbDatepicker #d3="ngbDatepicker" [placement]="'top'"
+                                        [positionTarget]="buttonEl" />
+                                    <button #buttonEl class="btn btn-primary calendar" (click)="d3.toggle()"
+                                        type="button">
+                                        <app-feather-icons [icon]="'calendar'"></app-feather-icons>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Fecha de inicio</label>
+                                <div class="input-group mb-3">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="model3" name="dp2"
+                                        ngbDatepicker #d4="ngbDatepicker" [placement]="'top'"
+                                        [positionTarget]="buttonEl" />
+                                    <button #buttonEl class="btn btn-primary calendar" (click)="d4.toggle()"
+                                        type="button">
+                                        <app-feather-icons [icon]="'calendar'"></app-feather-icons>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="form-label">Fecha fin</label>
+                                <div class="input-group mb-3">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="model4" name="dp3"
+                                        ngbDatepicker #dp3="ngbDatepicker" [placement]="'top'"
+                                        [positionTarget]="buttonEl" />
+                                    <button #buttonEl class="btn btn-primary calendar" (click)="dp3.toggle()"
+                                        type="button">
+                                        <app-feather-icons [icon]="'calendar'"></app-feather-icons>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Dirección</label>
+                                    <input class="form-control" type="text" placeholder="Dirección"
+                                        formControlName="address" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Teléfono</label>
+                                    <input class="form-control" type="text" placeholder="Teléfono"
+                                        formControlName="phone" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">DUI</label>
+                                    <input class="form-control" type="text" placeholder="DUI" formControlName="dui" />
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">NIT</label>
+                                    <input class="form-control" type="text" placeholder="NIT" formControlName="nit" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">ISSS</label>
+                                    <input class="form-control" type="text" placeholder="ISSS" formControlName="isss" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">AFP</label>
+                                    <input class="form-control" type="text" placeholder="AFP" formControlName="afp" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Salario Hora</label>
+                                    <input class="form-control" type="number" step="0.01" placeholder="Salario Hora"
+                                        formControlName="emp_hourly_wage" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Salario Dia</label>
+                                    <input class="form-control" type="number" step="0.01" placeholder="Salario Dia"
+                                        formControlName="emp_daily_wage" />
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Salario Base</label>
+                                    <input class="form-control" type="number" step="0.01" placeholder="Salario Base"
+                                        formControlName="emp_base_salary" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Viaticos</label>
+                                    <input class="form-control" type="number" step="0.01" placeholder="Viaticos"
+                                        formControlName="emp_viatic" />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Viaticos Complementarios</label>
+                                    <input class="form-control" type="number" step="0.01"
+                                        placeholder="Viaticos Complementarios"
+                                        formControlName="emp_complementary_diatic" />
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Departamento</label>
+                                    <select class="form-control">
+                                        <option selected>--Seleccione--</option>
+                                        <option value="1">Germany</option>
+                                        <option value="2">Canada</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Cargo Laboral</label>
+                                    <select class="form-control">
+                                        <option selected>--Seleccione--</option>
+                                        <option value="1">Germany</option>
+                                        <option value="2">Canada</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Tipo Laboral</label>
+                                    <select class="form-control">
+                                        <option selected>--Seleccione--</option>
+                                        <option value="1">Germany</option>
+                                        <option value="2">Canada</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Superior Inmediato</label>
+                                    <select class="form-control">
+                                        <option selected>--Seleccione--</option>
+                                        <option value="1">Germany</option>
+                                        <option value="2">Canada</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="card-footer text-end">
+                        <button class="btn btn-primary" type="submit">Update Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
