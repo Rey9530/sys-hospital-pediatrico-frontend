@@ -4,6 +4,11 @@ import { IndexComponent } from "./index/index.component";
 import { NewEmployeeComponent } from "./new-employee/new-employee.component";
 
 const routes: Routes = [
+  // {
+  //   path:'',
+  //   pathMatch:'full',
+  //   redirectTo:'index'
+  // },
   {
     path: "index",
     component: IndexComponent,

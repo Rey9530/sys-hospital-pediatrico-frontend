@@ -2,80 +2,89 @@
 <div class="container-fluid">
     <div class="edit-profile">
         <div class="row">
-
-            <div class="col-xl-12">
-                <form class="card" >
-                    <!-- [formGroup]="editProfile" -->
-                    <div class="card-header">
-                        <h4 class="card-title mb-0">Edit Profile</h4>
-                        <div class="card-options">
-                            <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse"><i
-                                    class="fe fe-chevron-up"></i></a><a class="card-options-remove"
-                                href="javascript:void(0)" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
-                        </div>
+            <div class="col-xl-12 card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Crear Empleado</h4>
+                    <div class="card-options">
+                        <a class="card-options-collapse" href="javascript:void(0)" data-bs-toggle="card-collapse"><i
+                                class="fe fe-chevron-up"></i></a><a class="card-options-remove"
+                            href="javascript:void(0)" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
                     </div>
-                    <div class="card-body">
+                </div>
+                <div class="card-body">
+                    <div class="tabbed-card"> 
+                        <ul ngbNav [activeId]="1" [tabIndex]="navSelected" ite class="pull-right nav nav-tabs border-tab nav-primary">
+                            <li [ngbNavItem]="1" (click)="changeTab('1')">
+                                <a ngbNavLink><i class="icofont icofont-man-in-glasses"></i> información</a>
+                                <ng-template ngbNavContent>
+                                </ng-template>
+                            </li> 
+                            <li [ngbNavItem]="2" (click)="changeTab('2')">
+                                <a ngbNavLink><i class="icofont icofont-contacts"></i>Descuentos</a>
+                                <ng-template ngbNavContent>
+                                </ng-template>
+                            </li>
+                        </ul>
+                    </div> 
+                    <form [formGroup]="editProfile" *ngIf="navSelected=='1'">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-12 m-0 p-0">
+                                <h6 class="m-0 p-0">información Personal</h6>
+                                <hr>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Código de empleado</label>
-                                    <input class="form-control" type="text" placeholder="Company"
-                                        formControlName="company" />
+                                    <input class="form-control" type="text" placeholder="Codigo empleado"
+                                        formControlName="employe_code" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Primer Nombre</label>
                                     <input class="form-control" type="text" placeholder="Username"
                                         formControlName="name_1" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Segundo Nombre</label>
                                     <input class="form-control" type="text" placeholder="Username"
                                         formControlName="name_2" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Tercer Nombre</label>
                                     <input class="form-control" type="text" placeholder="Username"
                                         formControlName="name_3" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Primer Apellido</label>
                                     <input class="form-control" type="text" placeholder="Username"
                                         formControlName="surname_1" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Segundo Apellido</label>
                                     <input class="form-control" type="text" placeholder="Username"
                                         formControlName="surname_2" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Apellido de casada</label>
                                     <input class="form-control" type="text" placeholder="Username"
                                         formControlName="surname_3" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <div class="mb-3">
-                                    <label class="form-label">Apellido de casada</label>
-                                    <input class="form-control" type="text" placeholder="Username"
-                                        formControlName="surname_3" />
-                                </div>
-                            </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Genero</label>
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="gender">
                                         <option selected>--Seleccione--</option>
                                         <option value="1">Germany</option>
                                         <option value="2">Canada</option>
@@ -83,41 +92,23 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <label class="form-label">Fecha de nacimiento</label>
                                 <div class="input-group mb-3">
                                     <input class="form-control" [(ngModel)]="model2" placeholder="yyyy-mm-dd" name="dp"
                                         ngbDatepicker #d3="ngbDatepicker" [placement]="'top'"
-                                        [positionTarget]="buttonEl" />
+                                        [positionTarget]="buttonEl" formControlName="birth_date" />
                                     <button #buttonEl class="btn btn-primary calendar" (click)="d3.toggle()"
                                         type="button">
                                         <app-feather-icons [icon]="'calendar'"></app-feather-icons>
                                     </button>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <label class="form-label">Fecha de inicio</label>
-                                <div class="input-group mb-3">
-                                    <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="model3" name="dp2"
-                                        ngbDatepicker #d4="ngbDatepicker" [placement]="'top'"
-                                        [positionTarget]="buttonEl" />
-                                    <button #buttonEl class="btn btn-primary calendar" (click)="d4.toggle()"
-                                        type="button">
-                                        <app-feather-icons [icon]="'calendar'"></app-feather-icons>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <label class="form-label">Fecha fin</label>
-                                <div class="input-group mb-3">
-                                    <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="model4" name="dp3"
-                                        ngbDatepicker #dp3="ngbDatepicker" [placement]="'top'"
-                                        [positionTarget]="buttonEl" />
-                                    <button #buttonEl class="btn btn-primary calendar" (click)="dp3.toggle()"
-                                        type="button">
-                                        <app-feather-icons [icon]="'calendar'"></app-feather-icons>
-                                    </button>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label">Teléfono</label>
+                                    <input class="form-control" type="text" placeholder="Teléfono"
+                                        formControlName="phone" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -127,15 +118,14 @@
                                         formControlName="address" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <div class="mb-3">
-                                    <label class="form-label">Teléfono</label>
-                                    <input class="form-control" type="text" placeholder="Teléfono"
-                                        formControlName="phone" />
-                                </div>
+
+                            <div class="col-12 m-0 p-0">
+                                <br>
+                                <h6 class="m-0 p-0">información de indentificacion</h6>
+                                <hr>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">DUI</label>
                                     <input class="form-control" type="text" placeholder="DUI" formControlName="dui" />
@@ -143,27 +133,57 @@
                             </div>
 
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">NIT</label>
                                     <input class="form-control" type="text" placeholder="NIT" formControlName="nit" />
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">ISSS</label>
                                     <input class="form-control" type="text" placeholder="ISSS" formControlName="isss" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">AFP</label>
                                     <input class="form-control" type="text" placeholder="AFP" formControlName="afp" />
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-12 m-0 p-0">
+                                <br>
+                                <h6 class="m-0 p-0">información administrativa</h6>
+                                <hr>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Fecha de inicio</label>
+                                <div class="input-group mb-3">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="model3" name="dp2"
+                                        ngbDatepicker #d4="ngbDatepicker" [placement]="'top'"
+                                        [positionTarget]="buttonEl" formControlName="start_date" />
+                                    <button #buttonEl class="btn btn-primary calendar" (click)="d4.toggle()"
+                                        type="button">
+                                        <app-feather-icons [icon]="'calendar'"></app-feather-icons>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">Fecha fin</label>
+                                <div class="input-group mb-3">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="model4" name="dp3"
+                                        ngbDatepicker #dp3="ngbDatepicker" [placement]="'top'"
+                                        [positionTarget]="buttonEl" formControlName="end_date" />
+                                    <button #buttonEl class="btn btn-primary calendar" (click)="dp3.toggle()"
+                                        type="button">
+                                        <app-feather-icons [icon]="'calendar'"></app-feather-icons>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Salario Hora</label>
                                     <input class="form-control" type="number" step="0.01" placeholder="Salario Hora"
@@ -171,7 +191,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Salario Dia</label>
                                     <input class="form-control" type="number" step="0.01" placeholder="Salario Dia"
@@ -180,21 +200,21 @@
                             </div>
 
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Salario Base</label>
                                     <input class="form-control" type="number" step="0.01" placeholder="Salario Base"
                                         formControlName="emp_base_salary" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Viaticos</label>
                                     <input class="form-control" type="number" step="0.01" placeholder="Viaticos"
                                         formControlName="emp_viatic" />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Viaticos Complementarios</label>
                                     <input class="form-control" type="number" step="0.01"
@@ -204,10 +224,10 @@
                             </div>
 
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Departamento</label>
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="departament">
                                         <option selected>--Seleccione--</option>
                                         <option value="1">Germany</option>
                                         <option value="2">Canada</option>
@@ -216,10 +236,10 @@
                             </div>
 
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Cargo Laboral</label>
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="job_title">
                                         <option selected>--Seleccione--</option>
                                         <option value="1">Germany</option>
                                         <option value="2">Canada</option>
@@ -227,10 +247,10 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label class="form-label">Tipo Laboral</label>
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="job_type">
                                         <option selected>--Seleccione--</option>
                                         <option value="1">Germany</option>
                                         <option value="2">Canada</option>
@@ -241,7 +261,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label">Superior Inmediato</label>
-                                    <select class="form-control">
+                                    <select class="form-control" formControlName="immediate_superior">
                                         <option selected>--Seleccione--</option>
                                         <option value="1">Germany</option>
                                         <option value="2">Canada</option>
@@ -249,14 +269,12 @@
                                 </div>
                             </div>
 
-
-
                         </div>
-                    </div>
-                    <div class="card-footer text-end">
-                        <button class="btn btn-primary" type="submit">Update Profile</button>
-                    </div>
-                </form>
+                        <div class="card-footer text-end">
+                            <button class="btn btn-primary" type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
