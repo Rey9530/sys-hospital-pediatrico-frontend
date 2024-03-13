@@ -37,7 +37,7 @@ export class IndexComponent implements OnInit {
   }
 
 
-  deleteDiscount(id_: any) {
+  deleteEmployee(id_: any) {
     let data = this.employyes.filter((e: any) => e.emp_code == id_)[0];
     let employee = data.emp_first_name + ' ' + data.emp_second_name + ' ' + data.emp_third_name + ' ' + data.emp_first_surname + ' ' + data.emp_second_surname + ' ' + data.emp_married_surname
     Swal.fire({
