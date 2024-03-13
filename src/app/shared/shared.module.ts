@@ -3,6 +3,8 @@ import { RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+
+import { NgSelectModule } from '@ng-select/ng-select';
 // Components
 import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.component";
 import { FeatherIconsComponent } from "./components/feather-icons/feather-icons.component";
@@ -51,8 +53,8 @@ import { SwiperComponent } from "./components/header/elements/swiper/swiper.comp
     SvgIconComponent,
     SwiperComponent,
   ],
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, NgbModule, SwiperModule],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, NgbModule, SwiperModule, NgSelectModule,],
   providers: [NavService, LayoutService, DecimalPipe],
-  exports: [NgbModule, FormsModule, ReactiveFormsModule, LoaderComponent, BreadcrumbComponent, FeatherIconsComponent, TapToTopComponent, SvgIconComponent, SwiperModule],
+  exports: [NgbModule, FormsModule, ReactiveFormsModule, LoaderComponent, BreadcrumbComponent, FeatherIconsComponent, TapToTopComponent, SvgIconComponent, SwiperModule,NgSelectModule],
 })
-export class SharedModule {}
+export class SharedModule { }

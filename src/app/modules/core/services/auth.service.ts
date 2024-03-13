@@ -27,6 +27,7 @@ export class AuthenticationService {
      * current user
      */
     public get currentUserValue(): User {
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(USER_KEY)!));
         return this.currentUserSubject.value;
     }
 

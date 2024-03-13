@@ -51,9 +51,10 @@ export class LoginComponent implements OnInit {
         .subscribe({
           next: (data: any) => {
             if (data.status == 201) {  
-              localStorage.setItem(USER_KEY, JSON.stringify(data.data));
+              localStorage.setItem(USER_KEY, JSON.stringify(data.data)); 
+              localStorage.setItem("token", data.data.token); 
               this.router.navigate(["/dashboard/main"]);
-              document.body.classList.add("dark-only"); 
+              document.body.classList.add("dark-only");  
             } else { 
               setTimeout(() => {
                 this.loading = false;

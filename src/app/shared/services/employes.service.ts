@@ -14,12 +14,22 @@ export class EmployesService {
   getOne(id: any) {
     return this.http.get(`${this.endpoint}/${id}`);
   }
-  create(data: any, id: number) {
-    if (id > 0) {
+  getDiscounts(id: any) {
+    return this.http.get(`${this.endpoint}/get/discountss/${id}`);
+  }
+  create(data: any, id: string) {
+    if (id.length > 10) {
       return this.http.put(`${this.endpoint}/${id}`, data);
     } else {
       return this.http.post(`${this.endpoint}`, data);
     }
+  }
+
+  create_discount(data: any) {
+    return this.http.post(`${this.endpoint}/discounts`, data);
+  }
+  deleteDiscount(id: any) {
+    return this.http.delete(`${this.endpoint}/discounts/${id}`);
   }
   delete(id: any) {
     return this.http.delete(`${this.endpoint}/${id}`);

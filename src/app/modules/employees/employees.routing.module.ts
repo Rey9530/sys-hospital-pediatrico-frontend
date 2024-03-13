@@ -17,6 +17,10 @@ const routes: Routes = [
     path: "create",
     component: NewEmployeeComponent,
   },
+  {
+    path: "update/:id",
+    component: NewEmployeeComponent,
+  },
 ];
 
 @NgModule({

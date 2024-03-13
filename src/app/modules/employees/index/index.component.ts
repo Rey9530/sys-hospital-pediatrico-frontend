@@ -5,6 +5,7 @@ import {
 } from "src/app/shared/services";
 
 import { Employee, EmployesInterface } from '../interfaces/employes_response.interface';
+const Swal = require('sweetalert2')
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -31,6 +32,42 @@ export class IndexComponent implements OnInit {
       },
       error: () => {
         this.loading = false;
+      }
+    });
+  }
+
+
+  deleteDiscount(id_: any) {
+    let data = this.employyes.filter((e: any) => e.emp_code == id_)[0];
+    let employee = data.emp_first_name + ' ' + data.emp_second_name + ' ' + data.emp_third_name + ' ' + data.emp_first_surname + ' ' + data.emp_second_surname + ' ' + data.emp_married_surname
+    Swal.fire({
+      title: "¿Está seguro?",
+      text: `Estas por eliminar: ${employee}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#364574",
+      cancelButtonColor: "rgb(243, 78, 78)",
+      confirmButtonText: "Si, Eliminar!",
+      cancelButtonText: "No, Cancelar!",
+    }).then((result) => {
+      if (result.value) {
+        this.service.delete(id_).subscribe({
+          next: (resp) => {
+            var r: any = resp;
+            if (r.status) {
+              this.getAllEmployees();
+
+              Swal.fire({
+                type: 'success',
+                title: 'Exito',
+                text: 'Empleado eliminado con exito!',
+                showConfirmButton: true,
+                icon: "success"
+
+              });
+            }
+          },
+        });
       }
     });
   }
