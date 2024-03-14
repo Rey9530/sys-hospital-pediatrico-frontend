@@ -25,6 +25,7 @@ import { DashboardModule } from "./modules/dashboard/dashboard.module";
 import { JwtInterceptor } from "./modules/core/helpers/jwt.interceptor";
 import { ErrorInterceptor } from "./modules/core/helpers/error.interceptor";
 import { EmployeesModule } from "./modules/employees/employees.module";
+import { FormSheetsModule } from "./modules/form-sheets/form-sheets.module";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { EmployeesModule } from "./modules/employees/employees.module";
     LoadingBarModule,
     AuthModule,
     DashboardModule,
-    EmployeesModule
+    EmployeesModule,
+    FormSheetsModule
   ],
   providers: [
     CookieService,

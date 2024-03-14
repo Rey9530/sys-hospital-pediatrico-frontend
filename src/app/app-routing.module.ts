@@ -29,6 +29,11 @@ const routes: Routes = [
         loadChildren: () =>
           import("./modules/employees/employees.module").then((m) => m.EmployeesModule),
       },
+      {
+        path: "form-sheets",
+        loadChildren: () =>
+          import("./modules/form-sheets/form-sheets.module").then((m) => m.FormSheetsModule),
+      },
     ]
   },
   {

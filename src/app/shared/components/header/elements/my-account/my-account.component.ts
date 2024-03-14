@@ -11,15 +11,18 @@ export class MyAccountComponent implements OnInit {
   public userName: string;
   public profileImg: "assets/images/dashboard/profile.jpg";
 
-  constructor(public router: Router,
-    private authenticationService: AuthenticationService,) {
+  currentUser;
+  constructor(
+    public router: Router,
+    private authenticationService: AuthenticationService,
+  ) {
+    this.currentUser = this.authenticationService.currentUserValue;
     if (JSON.parse(localStorage.getItem("user"))) {
     } else {
     }
   }
 
   ngOnInit() { }
-
   logoutFunc() {
     this.authenticationService.logout();
     this.router.navigateByUrl('/auth/login');

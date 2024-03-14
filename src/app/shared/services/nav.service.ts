@@ -80,7 +80,7 @@ export class NavService implements OnDestroy {
   }
 
   MENUITEMS: Menu[] = [
-    { path: "/dashboard/main", icon: "home", title: "Tablero",  active: false, type: "link", bookmark: true },
+    { path: "/dashboard/main", icon: "home", title: "Tablero", active: false, type: "link", bookmark: true },
     // {
     //   title: "Simple Page",
     //   icon: "home",
@@ -93,8 +93,50 @@ export class NavService implements OnDestroy {
     //     { path: "/simple-page/second-page", title: "Second Page", type: "link" },
     //   ],
     // },
-    { path: "/employees/index", icon: "user", title: "Empleado",  active: false, type: "link", bookmark: true },
-    { path: "/single-page", icon: "search", title: "Single Page",  active: false, type: "link", bookmark: true },
+    { path: "/employees/index", icon: "user", title: "Empleado", active: false, type: "link", bookmark: true },
+    {
+      title: "Planillas",
+      icon: "table",
+      type: "sub",
+      badgeType: "light-primary",
+      // badgeValue: "2",
+      active: true,
+      children: [
+        { path: "/form-sheets/index", title: "Ver Planillas", type: "link" },
+        { path: "/form-sheets/create", title: "Crear Planilla", type: "link" },
+      ],
+    },
+    {
+      title: "Reportes",
+      icon: "task",
+      type: "sub",
+      badgeType: "light-primary",
+      // badgeValue: "2",
+      active: true,
+      children: [
+        { path: "/form-sheets/recalculation", title: "Recalculo", type: "link" },
+        { path: "/form-sheets/withholdings", title: "Rentenciones", type: "link" },
+        { path: "/form-sheets/discounts", title: "Descuentos", type: "link" },
+      ],
+    },
+    {
+      title: "Configuraciones",
+      icon: "others",
+      type: "sub",
+      badgeType: "light-primary",
+      // badgeValue: "2",
+      active: true,
+      children: [
+        { path: "/config/users", title: "Usuarios", type: "link" },
+        { path: "/config/categorys", title: "Categorias", type: "link" },
+        { path: "/config/institutes", title: "Instituciones", type: "link" },
+        { path: "/config/job-title", title: "Cargo Laboral", type: "link" },
+        { path: "/config/job-type", title: "Tipo Laboral", type: "link" },
+        { path: "/config/departament", title: "Departamento", type: "link" },
+        { path: "/config/rent", title: "Tabla Renta", type: "link" },
+        { path: "/config/system", title: "Sistema", type: "link" },
+      ],
+    },
   ];
 
   // Array
