@@ -13,6 +13,7 @@ const Swal = require('sweetalert2')
 })
 export class IndexComponent implements OnInit {
   employyes: Employee[] = [];
+  employyesFilter: Employee[] = [];
   loading: Boolean = false;
   constructor(
     private service: EmployesService,
@@ -21,6 +22,21 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.getAllEmployees();
   }
+  buscarEmpleado(termino: any) {
+    let busqueda = termino.target.value;
+    if (busqueda == null || busqueda.length == 0) {
+      this.employyes = this.employyesFilter;
+    } else {
+      this.employyes = this.employyesFilter.filter(e => (
+        e.emp_first_name.toLowerCase().includes(busqueda.toLowerCase()) ||
+        e.emp_second_name.toLowerCase().includes(busqueda.toLowerCase()) ||
+        e.emp_third_name.toLowerCase().includes(busqueda.toLowerCase()) ||
+        e.emp_second_surname.toLowerCase().includes(busqueda.toLowerCase()) ||
+        e.emp_first_surname.toLowerCase().includes(busqueda.toLowerCase()) ||
+        e.emp_married_surname.toLowerCase().includes(busqueda.toLowerCase())
+      ));
+    }
+  }
 
 
   getAllEmployees() {
@@ -28,6 +44,7 @@ export class IndexComponent implements OnInit {
     this.service.getAll().subscribe({
       next: (value: EmployesInterface) => {
         this.employyes = value.data;
+        this.employyesFilter = value.data;
         this.loading = false;
       },
       error: () => {
