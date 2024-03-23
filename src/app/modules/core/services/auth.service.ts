@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
 
-    url_api: String = environment.API_URL;
+    url_api: String = environment.API_URL+"v1/";
     user!: User;
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
